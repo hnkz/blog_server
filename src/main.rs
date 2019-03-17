@@ -9,7 +9,6 @@ use rocket_contrib::json::Json;
 use rocket::Request;
 use rocket::response::{self, Responder, Response };
 use serde::{Deserialize, Serialize};
-use rocket::http::Method;
 use std::fs::File;
 use std::io::prelude::*;
 

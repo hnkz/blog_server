@@ -1,0 +1,31 @@
+[global.limits]
+forms = 32768
+json = 1048576 # this is an extra used by the json contrib module
+msgpack = 1048576 # this is an extra used by the msgpack contrib module
+
+[development]
+address = "localhost"
+port = 8002
+workers = 1
+keep_alive = 5
+log = "normal"
+hi = "Hello!" # this is an unused extra; maybe application specific?
+is_extra = true # this is an unused extra; maybe application specific?
+tls = { certs = "/etc/letsencrypt/live/hnkznoserver.net/fullchain.pem", key = "/etc/letsencrypt/live/hnkznoserver.net/privkey.pem" }
+
+
+[staging]
+address = "0.0.0.0"
+port = 8000
+workers = 8
+keep_alive = 5
+log = "normal"
+tls = { certs = "/etc/letsencrypt/live/hnkznoserver.net/fullchain.pem", key = "/etc/letsencrypt/live/hnkznoserver.net/privkey.pem" }
+
+[production]
+address = "0.0.0.0"
+port = 8000
+workers = 12
+keep_alive = 5
+log = "critical"
+tls = { certs = "/etc/letsencrypt/live/hnkznoserver.net/fullchain.pem", key = "/etc/letsencrypt/live/hnkznoserver.net/privkey.pem" }
