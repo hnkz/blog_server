@@ -34,7 +34,7 @@ impl<'r> Responder<'r> for Blogs {
 #[get("/blogs")]
 fn get_blogs() -> Blogs {
     Blogs {
-        contents: Json(get_blog_json("./blog.json")),
+        contents: Json(get_blog_json("/home/hnkz/blog_server/blog/blog.json")),
     }
 }
 fn get_blog_json(filename: &str) -> Vec<Blog> {
