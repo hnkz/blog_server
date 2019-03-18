@@ -16,16 +16,16 @@ use std::io::prelude::*;
 pub struct Blog {
 	title: String,
 	tags: Vec<String>,
-    content: String,
+    contents: Vec<String>,
 	timestamp: String
 }
 pub struct Blogs {
-	contents: Json<Vec<Blog>>
+	blogs: Json<Vec<Blog>>
 }
 // For CORS
 impl<'r> Responder<'r> for Blogs {
 	fn respond_to(self, req: &Request) -> response::Result<'r> {
-		Response::build_from(self.contents.respond_to(req).unwrap())
+		Response::build_from(self.blogs.respond_to(req).unwrap())
 			.raw_header("Access-Control-Allow-Origin", "*")
 			.ok()
 	}
@@ -33,7 +33,7 @@ impl<'r> Responder<'r> for Blogs {
 #[get("/blogs")]
 fn get_blogs() -> Blogs {
     Blogs {
-        contents: Json(get_blog_json("/home/hnkz/blog_server/blog/blog.json")),
+        blogs: Json(get_blog_json("/home/hnkz/blog_server/blog/blog.json")),
     }
 }
 fn get_blog_json(filename: &str) -> Vec<Blog> {
